@@ -1,0 +1,86 @@
+<body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <app-navbar></app-navbar>
+  <div class="container">
+    <h1>List of races : </h1>
+    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 row">
+      <ul class="circuits">
+        <li *ngFor="let circuit of circuits | orderBy: 'name'; index as index " (click)="onSelect(circuit)" [class.selected]="circuit === selectedCircuit">
+          <span class="badge">{{circuit.type}}</span>
+          <span>{{circuit.name}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 row">
+      <div #information *ngIf="selectedCircuit" class="pisteInformation">
+        <form action="/action_page.php">
+          <h2>{{selectedCircuit.name}} details!</h2>
+          <div>
+            <label class="title">Circuit name : </label>
+            <label> {{selectedCircuit.name}}</label>
+          </div>
+          <div>
+            <label class="title">Vignette : </label>
+            <img src="{{ selectedCircuit.vignette }}" alt="Red dot" />
+          </div>
+          <div>
+            <label class="title">Type of circuit : </label>
+            <label> {{selectedCircuit.type}}</label>
+          </div>
+          <div>
+            <label class="title">Description : </label>
+            <label> {{selectedCircuit.description}}</label>
+          </div>
+          <div>
+            <label class="title">Average appreciation : </label>
+            <span class="fa fa-star" [ngClass]="check[0]"></span>
+            <span class="fa fa-star" [ngClass]="check[1]"></span>
+            <span class="fa fa-star" [ngClass]="check[2]"></span>
+            <span class="fa fa-star" [ngClass]="check[3]"></span>
+            <span class="fa fa-star" [ngClass]="check[4]"></span>
+          </div>
+          <div>
+            <label class="title">Number of times played : </label>
+            <label> {{selectedCircuit.timesPlayed}}</label>
+          </div>
+          <div>
+            <label class="title">Time records :</label>
+            <div *ngIf="this.circuitbestTimes[pistTurns - 1] !== null" class="raceBestTimesTableContainer">
+              <table id="table" border="4">
+                <thead>
+                  <tr>
+                    <th>Pos</th>
+                    <th>Driver</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let player of this.circuitbestTimes[pistTurns - 1]; index as i">
+                    <td width=20%>{{i + 1}}</td>
+                    <td width=40%>{{player.name}}</td>
+                    <td width=60%>{{player.time}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br/>
+            <select [(ngModel)]="pistTurns" name="laps" class="form-control">
+              <option disabled selected>Select Your Number of laps </option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <select [(ngModel)]="difficulty" name="difficulty" class="form-control">
+              <option disabled selected>Select Your difficulty </option>
+              <option value="amateur">amateur</option>
+              <option value="professionel">professionel</option>
+            </select>
+            <div>
+              <a [routerLink]="['/racing', selectedCircuit.name, pistTurns, difficulty]" *ngIf="pistTurns >= 1 && pistTurns <=3">Play this race!</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,22 @@
+<body>
+  <app-navbar-admin></app-navbar-admin>
+  <form class="container">
+
+    <div><label>Piste name : </label></div>
+    <input [(ngModel)]="name" class="w3-input" type="text" name="name">
+    <br><br>
+    <div><label>Type of circuit : </label></div>
+    <select [(ngModel)]="type" class="selecteurType" name="option">
+                  <option value="" disabled selected>Selectionnez </option>
+                  <option value="Amateur">Amateur</option>
+                  <option value="Professional">Professional</option>
+              </select>
+    <br><br>
+    <div><label>Description : </label></div>
+    <textarea [(ngModel)]="description" class="areaDescription" style="resize:none" name="texte"></textarea>
+    <br><br>
+    <div><button (click)="init(name,type,description)">Mettre à jour</button></div>
+    <br><br>
+  </form>
+
+</body>

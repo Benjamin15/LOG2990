@@ -1,0 +1,28 @@
+<body>
+  <div class="container">
+    <h1>List of races : </h1>
+    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 row">
+      <ul class="circuits">
+        <li *ngFor="let circuit of circuits | async | orderBy: 'name'; index as index " (click)="onSelect(circuit)" [class.selected]="circuit === selectedCircuit">
+          <span class="badge">{{circuit.type}}</span> <span>{{circuit.name}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 row">
+      <div #information *ngIf="selectedCircuit" class="pisteInformation">
+        <form action="/action_page.php">
+          <h2>{{selectedCircuit.name}} details!</h2>
+          <div><label class="title">Circuit name : </label> <label> {{selectedCircuit.name}}</label></div>
+          <div><label class="title">Type of circuit : </label> <label> {{selectedCircuit.type}}</label></div>
+          <div><label class="title">Description : </label> <label> {{selectedCircuit.description}}</label></div>
+          <div><label class="title">Average appreciation : </label> <label> {{selectedCircuit.averageAppreciation}}</label></div>
+          <div><label class="title">Number of times played : </label> <label> {{selectedCircuit.timesPlayed}}</label></div>
+          <div><label class="title">Time records : </label>
+            <div><a [routerLink]="['/editor', selectedCircuit.name]" >Would you like to continue to edit this circuit?</a></div>
+          </div>
+        </form>
+        <div><button (click)="deletePiste(selectedCircuit)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete </button></div>
+      </div>
+    </div>
+  </div>
+</body>

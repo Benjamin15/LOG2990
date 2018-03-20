@@ -1,0 +1,47 @@
+<body #myElement>
+  <div class="container">
+    <app-navbar></app-navbar>
+    <div [@routerTransition]>
+      <div class="frame" align="center">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th (click)="sortTable('difficulty')"><span class="glyphicon glyphicon-sort"></span> Difficulty</th>
+                <th (click)="sortTable('mode')"><span class="glyphicon glyphicon-sort"></span> Mode</th>
+                <th (click)="sortTable('namePlayer')"><span class="glyphicon glyphicon-sort"></span> Player</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let room of listRoom">
+                <th>{{room.difficulty}}</th>
+                <th>{{room.mode}}</th>
+                <th>{{room.namePlayer}}</th>
+                <th><button class="pulse-btn" (click)="initMyRoom(room)" data-toggle="modal" data-target="#modal">Join game</button></th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Modal content -->
+      <div #modal id="modal" class="modal zoomIn animated" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <button type="button" align="left" class="btn-close" data-dismiss="modal"></button>
+            <h1>Enter your name</h1>
+            <p>Game {{myRoom.mode}} to level {{myRoom.difficulty}}</p>
+            <input class="modal-input" type="text" [(ngModel)]="namePlayer" />
+            <button id="join" (click)="joinGame(myRoom)" data-dismiss="modal">Play with {{myRoom.namePlayer}}</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- bonton back -->
+      <!-- <button class="btn-back" (click)="back()"></button> -->
+      <a class="btn-back" href="http://localhost:4200/crossword"></a>
+      <button class="btn-push" (click)="createStyleGameComponent()">Create Game</button>
+    </div>
+  </div>
+</body>
+<app-factory-component [componentData]="componentData"></app-factory-component>

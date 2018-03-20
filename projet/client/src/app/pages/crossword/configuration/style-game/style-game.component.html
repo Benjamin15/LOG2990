@@ -1,0 +1,33 @@
+<body #myElement>
+  <div class="container">
+    <app-navbar></app-navbar>
+    <div [@routerTransition]>
+      <div class="frame" align="center" [@routerTransition]>
+
+        <h1>GAME CONFIGURATION</h1>
+
+        <form>
+          <div class="form-group row">
+            <h3 class="title"> Game Difficulty : </h3>
+            <select [(ngModel)]="this.configuration.difficulty" name="difficulty" class="form-control">
+              <option disabled selected value="select">Select</option>
+              <option value="Easy">Easy</option>
+              <option value="Normal">Normal</option>
+              <option value="Expert">Expert</option>
+            </select>
+            <h3 class="title"> Game Mode : </h3>
+            <select [(ngModel)]="this.configuration.mode" name="mode" class="form-control">
+              <option disabled selected value="select">Select </option>
+              <option value="Classical">Classical</option>
+              <option value="Dynamic">Dynamic</option>
+            </select>
+          </div>
+        </form>
+        <input type="text" class="namePlayer" [(ngModel)]="this.configuration.namePlayer" placeholder="Enter Your Name" />
+      </div>
+      <a class="btn-back" href="http://localhost:4200/crossword"></a>
+      <button class="btn-push" (click)="createCrosswordComponent()" type="button"> START </button>
+    </div>
+  </div>
+</body>
+<app-factory-component [componentData]="componentData"></app-factory-component>

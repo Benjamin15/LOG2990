@@ -1,0 +1,142 @@
+body {
+    background-color: #EEEEEE;
+    height: 100vh;
+    width: auto;
+    padding: 0 5%;
+}
+
+.infoBox {
+    background-color: #73AD21;
+    text-align: center;
+    font-weight: bold;
+    font-size: 130%;
+    color: black;
+    border-radius: 15px;
+    padding-top: 6px;
+    margin: 3vh 2vw;
+    height: 40px;
+    width: 20%;
+}
+
+.crosswordInfo {
+    border: 3px solid black;
+    cursor: pointer;
+    overflow: auto;
+    height: 66vh;
+    width: 30%;
+    padding: 1px;
+}
+.crosswordInfo button:disabled {
+    text-decoration: line-through;
+}
+
+.list-group {
+    font-weight: bold;
+    text-align: left;
+    font-size: 120%;
+    margin: 0px;
+}
+.list-group span {
+    background-color: blue;
+    margin-right: 20px;
+}
+
+table {
+    background-color: #9B9898;
+    align-content: center;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 110%;
+}
+table td,
+table td input {
+    border: 3px solid black;
+    vertical-align: middle;
+    text-align: center;
+    height: 5vh;
+    width: 5vh;
+}
+
+table td:focus,
+table td input:focus {
+    vertical-align: middle;
+    text-align: center;
+    height: 5vh;
+    width: 5vh;
+}
+table td input {
+    border: 0px;
+}
+
+#cheatBox,
+#cheatMode {
+    margin: 0px 2vw;
+}
+#cheatBox {
+    background-color: rgba(241, 48, 48, 0.78);
+    padding: 10px;
+}
+#cheatBox #btnChange {
+    margin-left: 5%;
+    border-radius: 0px 10px;
+}
+#cheatBox input {
+    text-align: center;
+    width: 10%;
+}
+
+.blackCase {
+    background-color: black;
+    color: black;
+}
+.disabledClient:disabled {
+    background-color: yellowgreen;
+}
+.disabledOther:disabled {
+    background-color: red;
+}
+.disabledMix:disabled {
+    background: repeating-linear-gradient(45deg, red, red 4px, yellowgreen 4px, yellowgreen 9px);
+    min-height: 100%;
+}
+
+table td .cursorClient,
+table td input .cursorClient {
+    border: 3px dashed yellowgreen;
+}
+table td .cursorOther,
+table td input .cursorOther {
+    border: 3px dashed red;
+}
+table td .cursorMix,
+table td input .cursorMix {
+    box-shadow: 0 0 0 3px red;
+    outline: 2px dotted yellowgreen;
+}
+
+.btn-end,
+.modal.egal .modal-title.win,
+.modal.egal .modal-title.lose,
+.modal.win .modal-title.lose,
+.modal.win .modal-title.egal,
+.modal.lose .modal-title.win,
+.modal.lose .modal-title.egal {
+    visibility: hidden;
+}
+
+.modal-content {
+    text-align: center;
+    margin-top: 10%;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+.modal.win .modal-content {
+    background-color: yellowgreen;
+}
+
+.modal.lose .modal-content {
+    background-color: red;
+}

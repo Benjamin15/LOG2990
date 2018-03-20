@@ -1,0 +1,91 @@
+<body>
+  <app-navbar></app-navbar>
+  <div [@routerTransition]>
+
+    <!-- Game Information -->
+    <div class="row" style="justify-content: space-between; display: flex">
+      <div class="infoBox col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div *ngIf="players !== undefined && configuration.nPlayer === 1">
+          {{players[0].name}} : {{players[0].score}} </div>
+        <div *ngIf="players !== undefined && configuration.nPlayer === 2">
+          {{players[0].name}} : {{players[0].score}} VS {{players[1].name}} : {{players[1].score}}</div>
+      </div>
+      <div class="infoBox col-lg-3 col-md-3 col-sm-3 col-xs-3">{{configuration.difficulty}}</div>
+      <div class="infoBox col-lg-3 col-md-3 col-sm-3 col-xs-3">{{configuration.mode}}</div>
+      <div class="infoBox col-lg-3 col-md-3 col-sm-3 col-xs-3">Timer : {{timer}}</div>
+    </div>
+
+    <div class="row" style="justify-content: space-between; display: flex">
+      <!-- Horizontal definition zone -->
+      <div class="crosswordInfo col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="list-group" *ngFor="let item of localHorizontal">
+          <button (click)="getSelection(item.positions,true)" class="list-group-item" [ngClass]="item.style" [disabled]="item.disabled">
+            <span class="badge pull-left">{{item.index}}</span>
+            <div *ngIf="!cheatDefinition">{{item.definition}}</div>
+            <div *ngIf="cheatDefinition">{{item.word}}</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Grid zone -->
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <table align="center">
+          <tr>
+            <td></td>
+            <td *ngFor="let row of localGrid.tiles; index as j">{{j+1}}</td>
+          </tr>
+          <tr *ngFor="let row of localGrid.tiles; index as i">
+            <td>{{charCode(i)}}</td>
+            <td *ngFor="let cell of row; index as j">
+              <input #cells type="text" maxlength="1" size="1" (keydown)="keyboardEvent($event,i,j)" [(ngModel)]="cell.value" id="{{i}}-{{j}}"
+                [ngClass]="cell.style" [disabled]="cell.disabled" />
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Vertical definition zone -->
+      <div class="crosswordInfo col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="list-group" *ngFor="let item of localVertical">
+          <button (click)="getSelection(item.positions,false)" class="list-group-item" [ngClass]="item.style" [disabled]="item.disabled">
+            <span class="badge pull-left">{{item.index}}</span>
+            <div *ngIf="!cheatDefinition">{{item.definition}}</div>
+            <div *ngIf="cheatDefinition">{{item.word}}</div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- cheat zone -->
+    <br/>
+    <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#cheatBox" id="cheatMode">CheatMode</button>
+    <div id="cheatBox" class="collapse" align="center">
+      <button (click)="cheatDefinition = !cheatDefinition" type="button" class="btn btn-danger">Definition or Word</button>
+      <button (click)="setTimer(newTime)" type="button" class="btn btn-danger" id="btnChange">Change Timer</button>
+      <input (keyup.enter)="setTimer(newTime)" type="number" [(ngModel)]="newTime" />
+    </div>
+  </div>
+
+  <button #btnEnd type="button" class="btn-end" data-toggle="modal" data-target="#myModal" data-backdrop="false"></button>
+
+  <!-- Modal end Game -->
+  <div [ngClass]="modal" class="modal" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title win">Victory</h4>
+          <h4 class="modal-title egal">Match Nul</h4>
+          <h4 class="modal-title lose">Defaite</h4>
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-default" href="http://localhost:4200/crossword">Go Home Page</a>
+          <button (click)="resetGame()" type="button" class="btn btn-default" data-dismiss="modal">Replay Same Configuration</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>

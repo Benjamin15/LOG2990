@@ -1,0 +1,11 @@
+<body #myElement>
+  <div class="container">
+    <app-navbar></app-navbar>
+    <div class="frame" align="center" [@routerTransition]>
+
+      <button class="btn-push first" (click)="createStyleGameComponent(); myElement.remove()" value="1 JOUEUR"> 1 JOUEUR </button>
+      <button class="btn-push" (click)="createJoinCreateComponent(); myElement.remove()"> 2 JOUEURS </button>
+    </div>
+  </div>
+</body>
+<app-factory-component [componentData]="componentData"></app-factory-component>

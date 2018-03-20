@@ -1,0 +1,382 @@
+
+@font-face{
+    font-family: myHUDFont;
+    src : url(/assets/fonts/DEADCRT.ttf);
+}
+.compteur {
+    position: absolute;
+    text-align: center;
+    color: red;
+    font-size: 40px;
+    font-family: myHUDFont;
+    top: 100px;
+    width: 100%;
+}
+
+.scene {
+    width: 100%;
+    height: 100vh;
+}
+
+.HUD {
+    text-align: right;
+    color: blue;
+    font-size: 20px;
+    font-family: normal;
+    position : absolute;
+    background-color: transparent;
+    width: 99vw !important;
+    padding-right: 15px
+}
+
+.space {
+    margin:15px;
+}
+
+.raceBestTimesTableContainer{
+    margin-top: 2px;
+}
+
+.table-raceTimes {
+    background-color: #f6f9fa;
+    
+}
+
+.raceResultsTableContainer{
+    margin-top: 2px;
+}
+
+.table-bordered {
+    background-color: #ababab;
+}
+
+td {
+    align-content: center;
+}
+
+.table-class {
+    position: absolute;
+}
+
+.myBtn {
+    top: 100px;
+    position: absolute;
+    text-align: center;
+    color: red;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.rating {
+    float:left;
+    
+}
+
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+.modal-header {
+    height: 50px;
+    visibility: hidden;
+}
+
+.modal-content{
+    color: transparent;
+    height: 30px;
+    height: 0px;
+}
+
+legend {
+    color: green;
+}
+.btn btn-info btn-lg{
+    top: -50px;
+    right: -50px;
+
+}
+
+$width: 100px;
+$height: $width/2;
+$amber: #FFC107;
+$grey: #ccc;
+$time: 0.4s;
+
+@mixin animation($name) {
+  @-webkit-keyframes #{$name} {@content;}
+  @-moz-keyframes #{$name} {@content;}
+  @-o-keyframes #{$name} {@content;}
+  @keyframes #{$name} {@content;}
+}
+
+@include animation(up) {
+  0%, 100% {
+    transform: rotate(0);
+  } 
+  50% {
+    transform: rotate(-30deg);
+  }
+}
+
+@include animation(down) {
+  0%, 100% {
+    transform: rotate(0);
+  } 
+  50% {
+    transform: rotate(30deg);
+  }
+}
+
+@include animation(r-to-l) {
+  100% {
+    margin-left: -1px;
+  } 
+}
+
+@mixin use-animation($name, $time){
+  -webkit-animation: $name $time infinite;
+  -moz-animation: $name $time infinite;
+  -o-animation: $name $time infinite;
+  animation: $name $time infinite;
+}
+
+.pacman:before, .pacman:after{
+content: '';
+position: absolute;
+background: $amber;
+width: $width;
+height: $height;
+left: 40%;
+top: 30%;
+margin-left: - $width/2;
+margin-top: - $height;
+border-radius: $height $height 0 0;
+@include use-animation(up, $time);
+}
+
+.pacman:after {
+margin-top: -1px;
+border-radius: 0 0 $height $height;
+@include use-animation(down, $time);
+} 
+
+.dot{
+content: '';
+position: absolute;
+left: 40%;
+top: 30%;
+width: $height/5;
+height: $height/5;
+margin-top: - $width/10;
+margin-left: 30px;
+border-radius: 50%;
+background: $grey;
+box-shadow: 30px 0 0 $grey,
+            60px 0 0 $grey,
+            90px 0 0 $grey,
+            120px 0 0 $grey,
+            150px 0 0 $grey,
+            180px 0 0 $grey,
+            210px 0 0 $grey,
+            240px 0 0 $grey;
+            
+@include use-animation(r-to-l, $time);
+}
+
+#loading {
+    position:absolute;
+    width:600px;
+    height:36px;
+    left:48%;
+    top:40%;
+    padding-top: 40px;
+    margin-left:-300px;
+    overflow:visible;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    cursor:default;
+  }
+  
+  #loading div {
+    position:absolute;
+    width:20px;
+    height:36px;
+    opacity:0;
+    font-family:"Comic Sans MS", cursive, sans-serif;
+    animation:move 2.5s linear infinite;
+    -o-animation:move 2.5s linear infinite;
+    -moz-animation:move 2.5s linear infinite;
+    -webkit-animation:move 2.5s linear infinite;
+    transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+    color:#35C4F0;
+  }
+  
+  #loading div:nth-child(2) {
+    animation-delay:0.2s;
+    -o-animation-delay:0.2s;
+    -moz-animation-delay:0.2s;
+    -webkit-animation-delay:0.2s;
+  }
+  #loading div:nth-child(3) {
+    animation-delay:0.4s;
+    -o-animation-delay:0.4s;
+    -webkit-animation-delay:0.4s;
+    -webkit-animation-delay:0.4s;
+  }
+  #loading div:nth-child(4) {
+    animation-delay:0.6s;
+    -o-animation-delay:0.6s;
+    -moz-animation-delay:0.6s;
+    -webkit-animation-delay:0.6s;
+  }
+  #loading div:nth-child(5) {
+    animation-delay:0.8s;
+    -o-animation-delay:0.8s;
+    -moz-animation-delay:0.8s;
+    -webkit-animation-delay:0.8s;
+  }
+  #loading div:nth-child(6) {
+    animation-delay:1s;
+    -o-animation-delay:1s;
+    -moz-animation-delay:1s;
+    -webkit-animation-delay:1s;
+  }
+  #loading div:nth-child(7) {
+    animation-delay:1.2s;
+    -o-animation-delay:1.2s;
+    -moz-animation-delay:1.2s;
+    -webkit-animation-delay:1.2s;
+  }
+  
+  @keyframes move {
+    0% {
+      left:0;
+      opacity:0;
+    }
+      35% {
+          left: 41%; 
+          -moz-transform:rotate(0deg);
+          -webkit-transform:rotate(0deg);
+          -o-transform:rotate(0deg);
+          transform:rotate(0deg);
+          opacity:1;
+      }
+      65% {
+          left:59%; 
+          -moz-transform:rotate(0deg); 
+          -webkit-transform:rotate(0deg); 
+          -o-transform:rotate(0deg);
+          transform:rotate(0deg); 
+          opacity:1;
+      }
+      100% {
+          left:100%; 
+          -moz-transform:rotate(-180deg); 
+          -webkit-transform:rotate(-180deg); 
+          -o-transform:rotate(-180deg); 
+          transform:rotate(-180deg);
+          opacity:0;
+      }
+  }
+  
+  @-moz-keyframes move {
+      0% {
+          left:0; 
+          opacity:0;
+      }
+      35% {
+          left:41%; 
+          -moz-transform:rotate(0deg); 
+          transform:rotate(0deg);
+          opacity:1;
+      }
+      65% {
+          left:59%; 
+          -moz-transform:rotate(0deg); 
+          transform:rotate(0deg);
+          opacity:1;
+      }
+      100% {
+          left:100%; 
+          -moz-transform:rotate(-180deg); 
+          transform:rotate(-180deg);
+          opacity:0;
+      }
+  }
+  
+  @-webkit-keyframes move {
+      0% {
+          left:0; 
+          opacity:0;
+      }
+      35% {
+          left:41%; 
+          -webkit-transform:rotate(0deg); 
+          transform:rotate(0deg); 
+          opacity:1;
+      }
+      65% {
+          left:59%; 
+          -webkit-transform:rotate(0deg); 
+          transform:rotate(0deg); 
+          opacity:1;
+      }
+      100% {
+          left:100%;
+          -webkit-transform:rotate(-180deg); 
+          transform:rotate(-180deg); 
+          opacity:0;
+      }
+  }

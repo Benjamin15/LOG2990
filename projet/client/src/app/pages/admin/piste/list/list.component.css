@@ -1,0 +1,58 @@
+.container {
+    font-weight: bold;
+    border: solid 2px #DDDDDD;
+    background-color: #DDDDDD;
+}
+
+.selected {
+    background-color: #5263DD  !important;
+    color: black;
+}
+.circuits {
+    list-style-type: none;
+    width: 90%;
+    padding-left: 5px;
+}
+.circuits li {
+    cursor: pointer;
+    position: relative;
+    background-color: #D5EAFD;
+    margin: 1em;
+    padding: 0.7em 0em;
+    border-radius: 40px;
+}
+.circuits li.selected:hover {
+    background-color: #3040AE !important;
+    color: black;
+}
+.circuits li:hover {
+    color: black;
+    background-color: #A1DAFF;
+}
+.circuits .badge {
+    font-size: 100%;
+    display: inline-block;
+    background-color: #5400FF;
+    position: center;
+    color: white;
+    padding: 0.45em 0 0 0.7em;
+    width: 8.5em;
+    height: 1.8em;
+    margin-right: 1em;
+    border-radius: 10px 0 0 10px;
+}
+
+.pisteInformation {
+    border: solid 2px #D4CCCC;
+    background-color: #D4D4CC;
+    border-radius: 10px;
+    font-weight: bold;
+    width: 30em;
+    padding: 0px 20px 15px 20px;
+}
+.pisteInformation .title {
+    width: 12em;
+}
+.pisteInformation #table {
+    width: 100%;
+}

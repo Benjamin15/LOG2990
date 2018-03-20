@@ -1,0 +1,148 @@
+body {
+    background-image: url("./../etoile.jpg");
+    padding-top: 55px;
+    min-height: 100vh;
+}
+
+.container {
+    border: solid 3px dodgerblue;
+    background-color: #F1FAFA;
+    border-radius: 60px;
+    min-height: 490px;
+    min-width: 700px;
+    margin-top: 2vh;
+    height: 88vh;
+    width: 55vw;
+}
+
+.frame {
+    min-width: 200px;
+    padding: 0px 20px;
+    height: 65vh;
+    overflow: auto;
+}
+
+.table-responsive {
+    font-size: 22px;
+    border: none;
+}
+.table th {
+    text-align: center;
+}
+.table th span {
+    cursor: pointer;
+}
+
+.table .pulse-btn {
+    font-family: "Open Sans";
+    border-radius: 25px;
+    animation: none;
+    font-size: 20px;
+    border: none;
+    box-shadow: 0 0 0 0 rgba(232, 76, 61, 0.7);
+}
+.table tr:hover {
+    background-color: rgb(124, 253, 253);
+}
+.table tr:hover .pulse-btn,
+.table tr .pulse-btn:hover {
+    animation: pulse 1.25s infinite;
+}
+@keyframes pulse {to {box-shadow: 0 0 0 8px rgba(232, 76, 61, 0);}}
+
+.btn-push {
+    font-family: "Open Sans";
+    padding: 15px 0px;
+    position: relative;
+    font-size: 30px;
+    width: 250px;
+    box-shadow: 0px 10px 0px #07121b;
+    border: 1px solid #07121b;
+    background: #1b486d;
+    border-radius: 5px;
+    color: white;
+    display: block;
+    margin: auto;
+    transition: All 250ms ease;
+}
+.frame .btn-push:hover {
+    box-shadow: none !important;
+    transition: All 250ms ease;
+}
+
+.btn-back {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: none;
+    margin-left: 10px;
+    box-shadow: 0 0 0 0px rgba(134, 134, 134, 0.4);
+    background-color: dimgrey;
+    background-image: url(https://image.flaticon.com/icons/svg/26/26004.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    animation: none;
+}
+.btn-back:hover {
+    animation: pulse-back 1.25s infinite;
+}
+@keyframes pulse-back {to {box-shadow: 0 0 0 15px rgba(134, 134, 134, 0.4);}}
+
+.modal {
+    text-align: center;
+}
+.modal:before {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
+.modal-dialog {
+    margin: 38vh auto;
+    width: 600px;
+}
+.modal-content {
+    padding: 5px;
+    background-clip: padding-box;
+    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.25);
+}
+.modal-input {
+    margin: 6px 0px 20px;
+    margin-right: -7px;
+}
+#join {
+    border-radius: 0px 10px 10px 0px;
+    border: gainsboro solid;
+}
+.btn-close {
+    position: absolute;
+    margin-left: 260px;
+    margin-top: 5px;
+    border: none;
+    height: 20px;
+    width: 20px;
+    background-image: url(https://image.flaticon.com/icons/svg/126/126497.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.zoomIn {
+    animation-name: zoomIn;
+}
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
