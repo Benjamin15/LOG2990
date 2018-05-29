@@ -4,3 +4,4 @@
 
 
 <p> Seul les fichiers sources sont présents sur le git. On a retiré les assets en raison de leur poids trop élevé pour git <p>
+<p> Les technologies ayant été utilisées sont le framework angular, nodejs , mongoDB, three.js <p>
